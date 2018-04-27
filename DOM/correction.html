@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h1>Quelques instruments de musique</h1>
+    <ul>
+        <li id="clarinette" class="vent bois">
+            La <a href="https://fr.wikipedia.org/wiki/Clarinette">clarinette</a>
+        </li>
+        <li id="saxophone" class="vent bois">
+            Le <a href="https://fr.wikipedia.org/wiki/Saxophone">saxophone</a>
+        </li>
+        <li id="trompette" class="vent cuivre">
+            La <a href="https://fr.wikipedia.org/wiki/Trompette">trompette</a>
+        </li>
+        <li id="violon" class="cordes frottees">
+            Le <a href="https://fr.wikipedia.org/wiki/Violon">violon</a>
+        </li>
+    </ul>
+
+
+    <script>
+        
+    function infosLiens() {
+    var liensElts = document.getElementsByTagName("a");
+    var nombreLiens = liensElts.length;
+    console.log(nombreLiens);
+
+    if (nombreLiens > 0) {
+        console.log(liensElts[0].getAttribute("href"));
+        console.log(liensElts[nombreLiens - 1].getAttribute("href"));
+    }
+}                 
+infosLiens();
+    
+    </script>
+
+</body>
+</html>
