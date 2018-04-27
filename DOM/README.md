@@ -1,4 +1,6 @@
-# Javascript : Parcourir le DOM
+# Javascript : DOM
+
+## Parcourir le DOM
 
 Selecteur :
 
@@ -48,3 +50,27 @@ for (var i = 0; i < document.body.childNodes.length; i++) {
 `getElementsByTagName` : renvoie une liste des éléments qui portent le nom de la balise qui a été passée en paramètre lors de l’appel.
 
 `var titresElts = document.getElementsByTagName("h2");// Tous les titres h2`
+
+## Modifier la structure de la page
+
+`innerHTML` permet de récupérer tout le contenu HTML d'un élément du DOM mais peut être utilisé pour modifier le contenu HTML avec `+=` .  Exemple, rajouter un li à la balise ul.
+
+```JS
+// Modification du contenu HTML de la liste : ajout d'un langage
+document.getElementById("idUl").innerHTML += '<li id="c">Je rajoute qq chose</li>';
+// Vider un élément
+document.getElementById("langages").innerHTML = "";
+```
+
+`setAttribute` définir un attribut (id, class, name, etc) : `document.querySelector("h1").setAttribute("id", "titre");`
+
+## Ajouter un nouvel élément
+
+```JS
+
+var pythonElt = document.createElement("li"); // Création d'un élément li
+pythonElt.id = "python"; // Définition de son identifiant
+pythonElt.textContent = "Python"; // Définition de son contenu textuel
+document.getElementById("langages").appendChild(pythonElt); // Insertion du nouvel élément
+
+```
