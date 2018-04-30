@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- .................Exercice 1.......... -->
+    <!-- Faire une fonction qui additionne 2 nombres -->
+<script>
+
+function addition (nbr1, nbr2){ //Déclaration de la fonction avec deux arguments
+    return nbr1 + nbr2;
+}
+var calcul1 = addition(5,10);
+
+</script>
+
+<!-- ...................Exercice 2 ................. -->
+<!-- Faire une fonction qui fait un nombre aléaroire de 1 à 6 -->
+<script>
+
+function nb_aleatoire(min, max)
+{
+     var nb = min + (max-min+1)*Math.random();
+     return Math.floor(nb);
+}
+var de = nb_aleatoire(1, 6);
+alert("Vous lancez un dé et obtenez " + de);
+</script>
+
+<!-- .................Exercice 3 ....................... -->
+<!-- Jeux deviner le nombre que l'ordinateur à choisi de façon aléatoire (entre 1 et 100) -->
+
+<script>
+var nb = nb_aleatoire(1, 100);  // nb a deviner
+var cpt = 0;    // nb de coups
+var saisie;
+var msg = 'Le nombre à deviner est compris entre 1 et 100.';
+
+do
+{
+     saisie = prompt(msg);
+     cpt++;
+     // message a afficher au prochain tour :
+     if(saisie > nb)
+          msg = "C'est moins";
+     else
+          msg = "C'est plus";
+}
+while(saisie != nb);
+
+alert("Bravo, tu as gagne en " + cpt + " coups !");
+
+</script>
+
+</body>
+</html>
