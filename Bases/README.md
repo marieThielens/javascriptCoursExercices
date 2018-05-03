@@ -5,6 +5,7 @@
 
 Variable : `var nomVariable = "texte";`
 Concaténation : `document.write("Votre" + age);`
+Ecrire dans l'html : `innerHTML`
 
 ## Fonctions
 
@@ -50,8 +51,8 @@ var calcul1 = addition(5,10);
 ```JS
 function nb_aleatoire(min, max)
 {
-     var nb = min + (max-min+1)*Math.random();
-     return Math.floor(nb);
+     var nb = min + (max-min+1)*Math.random(); //Math.random: nombre aléatoire entre 0 et un (1 est exclu) ex:0.546587546
+     return Math.floor(nb); //Math.floor: arrondi
 }
 var de = nb_aleatoire(1, 6);
 alert("Vous lancez un dé et obtenez " + de);
@@ -124,5 +125,51 @@ do
         instructions
 }
 while(condition);
+
+```
+
+## Tableau
+
+```JS
+var table = new Array("Pierre", "Paul", "Jacques")
+alert("La seconde case vaut : " + table[1]);   // on lit l'element d'indice 1
+table[1] = "Toto";   // on le modifie
+table[3] = "Dupont";   // on cree un nouvel element
+```
+
+`table.length();` : Donne la longueur du tableau
+`table.sort();` : Trie par ordre alphabétique/ordre croissant
+
+### Parcourir le tableau
+
+```JS
+function lire1(tab)
+{
+        var chaine = "Le tableau contient :"
+        for(var i=0; i<table.length; i++)
+                chaine += "\n" + i + " -> " + tab[i];
+        return chaine;
+}
+
+```
+
+### Tableau associatif :
+
+```JS
+var arr = {
+    "un" : 1,
+    "deux" : 2,
+    "trois": 3
+    };
+```
+
+### Parcourir le tableau associatif
+
+```JS
+for(var key in arr) // Pour chaque clé dans arr (le tableau)
+{
+  var value = arr[key];
+  document.write(key + " = " + value + '<br>');
+}
 
 ```
