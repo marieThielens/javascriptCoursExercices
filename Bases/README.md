@@ -5,6 +5,7 @@
 
 Variable : `var nomVariable = "texte";`
 Concaténation : `document.write("Votre" + age);`
+Ecrire dans l'html : `innerHTML`
 
 ## Fonctions
 
@@ -50,8 +51,8 @@ var calcul1 = addition(5,10);
 ```JS
 function nb_aleatoire(min, max)
 {
-     var nb = min + (max-min+1)*Math.random();
-     return Math.floor(nb);
+     var nb = min + (max-min+1)*Math.random(); //Math.random: nombre aléatoire entre 0 et un (1 est exclu) ex:0.546587546
+     return Math.floor(nb); //Math.floor: arrondi
 }
 var de = nb_aleatoire(1, 6);
 alert("Vous lancez un dé et obtenez " + de);

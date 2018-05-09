@@ -56,5 +56,36 @@ alert("Bravo, tu as gagne en " + cpt + " coups !");
 
 </script>
 
+<!-- .................Exercice 4  ....................... -->
+<!-- Parcourir un tableau associatif : -->
+<script>
+var arr = {
+    "un" : 1,
+    "deux" : 2,
+    "trois": 3
+    };
+
+for(var key in arr) // Pour chaque clé dans arr (le tableau)
+{
+  var value = arr[key];
+  document.write(key + " = " + value + '<br>');
+}
+
+</script>
+
+
+<!-- .................Exercice 5  ....................... -->
+<!-- Parcourir un tableau associatif : -->
+<script>
+function moyenne(tableau)
+{
+        var n = tableau.length;   // nombre de valeurs
+        var somme = 0;
+        for(i=0; i<n; i++)
+                somme += tableau[i];
+        return somme/n;   // somme divisee par le nombre de valeurs
+}
+
+</script>
 </body>
 </html>
