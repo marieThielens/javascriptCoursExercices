@@ -58,5 +58,69 @@ possede("contrebasse", "cordes"); // Doit afficher false
     
     </script>
 
+<!-- Exercice 4 -->
+<h1>Quelques journaux en ligne</h1>
+<div id="contenu"></div>
+
+<script>
+
+var journaux = ["http://lemonde.fr", "http://lefigaro.fr", "http://liberation.fr"];
+
+// On fait une boucle du tableau
+for(var i=0; i < journaux.length; i++){
+    // crée un élément a
+    var lien = document.createElement('a');
+        // Rajout d'un contenu texte, chaque element du tableau
+        lien.textContent = journaux[i];
+        // transformer ce texte en href
+        lien.href = journaux[i];
+
+    // Creer un enfant
+    document.getElementById('contenu').appendChild(lien);
+    document.getElementById('contenu').appendChild(document.createElement('br'));
+}
+
+</script>
+
+<!-- Exercice 5 -->
+<h1>Dictionnaire</h1>
+<div id="contenu2"></div>
+
+<script>
+
+    // Liste des mots du dictionnaire
+var mots = [
+    {
+        terme: "Procrastination",
+        definition: "Tendance pathologique à remettre systématiquement au lendemain"
+    },
+    {
+        terme: "Tautologie",
+        definition: "Phrase dont la formulation ne peut être que vraie"
+    },
+    {
+        terme: "Oxymore",
+        definition: "Figure de style qui réunit dans un même syntagme deux termes sémantiquement opposés"
+    }
+];
+
+var dlElt = document.createElement("dl"); // Création de la liste
+
+// Pour chaque mot, on construit une balise <dt> avec le terme et une balise <dd> avec sa définition
+mots.forEach(function (mot) {
+    var dtElt = document.createElement("dt");
+    var strongElt = document.createElement("strong");
+    strongElt.textContent = mot.terme;
+    var ddElt = document.createElement("dd");
+    ddElt.textContent = mot.definition;
+
+    dtElt.appendChild(strongElt);
+    dlElt.appendChild(dtElt);
+    dlElt.appendChild(ddElt);
+});
+
+document.getElementById("contenu2").appendChild(dlElt); // Ajout de la liste à la page
+</script>
+
 </body>
 </html>

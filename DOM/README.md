@@ -1,5 +1,7 @@
 # Javascript : DOM
 
+<img src="../images/dom.jpg" style="width:40%;">
+
 ## Parcourir le DOM
 
 Selecteur :
@@ -73,4 +75,73 @@ pythonElt.id = "python"; // Définition de son identifiant
 pythonElt.textContent = "Python"; // Définition de son contenu textuel
 document.getElementById("langages").appendChild(pythonElt); // Insertion du nouvel élément
 
+```
+
+### Les classes
+
+`classList` : pour ajouter ou supprimer des classes
+
+```JS
+a.classList.remove("nomClasse");
+a.classList.add("nomClasse");
+```
+
+### Ajouter un nouvel élément
+
+1. Création du nouvel élément.
+2. Définition des informations de l'élément.
+3. Insertion du nouvel élément dans le DOM.
+
+```JS
+var a = document.createElement("li"); // Création d'un élément li
+a.id = "liMarie"; // Définition de son identifiant
+a.textContent = "Un li de plus .."; // Définition de son contenu textuel
+document.getElementById("langages").appendChild(a); // Insertion du nouvel élément en dernier 
+```
+
+`.appendChild()`: retourne un enfant en dernier (par rapport a son papa) -> `getElementById('papa').appendChild(a);`
+
+Autre méthode : `createTextNode` Crée un nouveau noeud de type node
+
+```JS
+var a = document.createElement("li"); // Création d'un élément li
+a.id = "ruby"; // Définition de son identifiant
+a.appendChild(document.createTextNode("Ruby")); // Définition de son contenu textuel
+document.getElementById("langages").appendChild(a); // Insertion du nouvel élément
+
+```
+
+`.inserBefore` : insérer un noeud avant un autre noeud. (au lieu que ce soit le dernier fils). On l'appelle sur le futur élément parent et on lui passe en paramètres le nouveau noeud ainsi que le noeud avant lequel le nouveau noeud sera inséré.
+
+Exemple : ajoute le langage Perl avant le langage PHP dans la list.
+
+```JS
+var a = document.createElement("li"); // Création d'un élément li
+a.id = "perl"; // Définition de son identifiant
+a.textContent = "Perl"; // Définition de son contenu textuel
+// Ajout du nouvel élément avant l'identifiant identifié par "php"
+document.getElementById("langages").insertBefore(a, document.getElementById("php"));
+
+```
+
+Choix de la position exacte du nouveau noeud
+
+`.ìnsertAdjacentHTML()`
+
+`beforebegin` : avant l'élément existant lui-même
+`afetbegin` : juste à l'intérieur de l'élément existant, avant son premier enfant.
+`beforeend` : juste à l'intérieur de l'élément existant, après son dernier enfant.
+`afterend` : après l'élément existant lui-même.
+
+```JS
+// Ajout d'un élément au tout début de la liste
+document.getElementById('langages').insertAdjacentHTML("afterBegin", 
+    '<li id="javascript">JavaScript</li>');
+```
+
+`.removeChild()`Supprimer un noeud existant
+
+```JS
+// Suppression de l'élément identifié par "bash"
+document.getElementById("langages").removeChild(document.getElementById("bash"));
 ```

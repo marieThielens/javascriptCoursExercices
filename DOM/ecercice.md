@@ -37,3 +37,45 @@ possede("trompette", "cuivre"); // Doit afficher true
 possede("contrebasse", "cordes"); // Doit afficher false
 
 ```
+
+3) Créer un nouvel élément :
+
+html :
+
+```HTML
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Quelques journaux en ligne</title>
+</head>
+
+<body>
+    <h1>Quelques journaux en ligne</h1>
+    <div id="contenu"></div>
+
+    <script src="../js/journaux.js"></script>
+</body>
+
+</html>
+```
+
+js :
+
+```JS
+// Liste des journaux
+var journaux = ["http://lemonde.fr", "http://lefigaro.fr", "http://liberation.fr"];
+
+// TODO : ajouter la liste des journaux sur la page, dans la div "contenu"
+```
+
+Aide :
+
+1. Faire une boucle sur le tableau
+2. Créer un élément a
+3. rajouter du texte pour chaque élément du tableau
+4. transformer ce texte en href
+
+5. Créer un enfant à #contenu
+6. Créer un enfant br

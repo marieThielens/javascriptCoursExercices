@@ -126,3 +126,46 @@ do
 while(condition);
 
 ```
+
+## Tableau
+
+### Dernier élément d'un tableau
+
+`var dernier = tableau[tableau.length - 1];`
+
+### Parcourir un tableau
+
+1. foreach() : permet d'exécuté une fonction sur chaque élément du tableau. Peu prendre plusieurs arguments
+
+```JS
+
+var array1 = ['a', 'b', 'c'];
+
+array1.forEach(function(element) {
+  console.log(element);
+    // expected output: "a"
+    // expected output: "b"
+    // expected output: "c"
+
+  array1.forEach(function(item, index, array) {
+  console.log(item, index);
+    // expected output: "a 0"
+    // expected output: "b 1"
+    // expected output: "c 2"
+
+
+});
+
+```
+
+`push()` Ajouter à la fin du tableau
+`pop()` Supprimer le dernier élément du tableau
+`shift()` Supprimer le premier élément du tableau
+`unshift()` Ajouter au début du tableau
+`ìndexOf()` Trouver l'index d'un élément dans le tableau
+`splice()` Supprimer un élément par son index
+
+```JS
+var removedItem = fruits.splice(pos, 1); // supprime 1 élément à la position pos
+````
+
