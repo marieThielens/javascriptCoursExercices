@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+function direBonjour(prenom, nom) {
+    var message = "Bonjour, " + prenom + " " + nom + " !";
+    return message;
+}
+var prenom = prompt( "Quel est votre prénom ?");
+var nom = prompt("Quel est votre nom de famille ? ");
+console.log(direBonjour(prenom, nom));
+
+    </script>
+
+    <!-- Exercice 2 -->
+
+<script>
+    // Renvoie le carré d'un nombre
+function carre(x) {
+    var carreNombre = x * x;
+  return carreNombre;
+}
+
+console.log(carre(0)); // Doit afficher 0
+console.log(carre(2)); // Doit afficher 4
+console.log(carre(5)); // Doit afficher 25
+</script>
+
+<!-- Exercice 3 -->
+
+<script>
+function calculer(nombre1, calcul, nombre2){
+
+    switch(calcul){
+
+        case "+" :
+            return nombre1 + nombre2;
+            break;
+
+        case "-" :
+            return nomnre1 - nombre2;
+            break;
+
+        case "*" :
+            return nombre1 * nombre2;
+            break;
+        
+        case "/" :
+        return nombre1 / nombre2;
+        break;
+
+    }
+
+}
+
+console.log(calculer(4, "+", 6)); // Doit afficher 10
+console.log(calculer(4, "-", 6)); // Doit afficher -2
+console.log(calculer(2, "*", 0)); // Doit afficher 0
+console.log(calculer(12, "/", 0)); // Doit afficher Infinity
+
+</script>
+
+</body>
+</html>
