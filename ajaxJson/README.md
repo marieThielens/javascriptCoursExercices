@@ -47,6 +47,9 @@ function ajaxGet(url, callback) {
 }
 ```
 
+`XMLHttpRequest`: est un objet javascript qui permet de récupérer des données via HTTP. Pour l’utiliser il suffit de créer une instance de cet objet, d’ouvrir une URL et d’envoyer la requête
+`const req = new XMLHttpRequest();`
+
 ### Types d'erreurs
 
 On distingue deux principaux cas d'erreur :
