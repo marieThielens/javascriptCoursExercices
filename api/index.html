@@ -5,21 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+            #map {
+              width: 50%;
+              height: 200px;
+              background-color: grey;
+              margin:0 auto;
+            }
+            #map2 {
+              width: 50%;
+              height: 200px;
+              background-color: grey;
+              margin:0 auto;
+            }
+          </style>
 </head>
 <body>
-    
-    <h1>Derniers articles</h1>
+
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '136847503737968',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v1.0'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.0&appId=136847503737968&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- ............................................................... -->
+    <h2>Se connecter avec facebook. Ne marche pas en localhost</h2>
+    <div id="fb-root"></div>
+    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+     <!-- .......................................................... -->
+    <h2>Faire vibrer votre gsm </h2>
+    <button onclick="vibration()">Vibrer</button>
+
+    <!-- .......................................................... -->
+    <h1>API Derniers articles hebergé sur heroku</h1>
     <div id="articles">
     </div>
 
-    <h1>Le Premier Ministre</h1>
+    <!-- .......................................................... -->
+    <h1>Api du Premier Ministre</h1>
     <div id="premMin">
     </div>
 
-    <h1>La météo à Lyon</h1>
-    <div id="meteo"></div>
 
-    <script src="./js/ajax.js"></script>
-    <script src="./js/cours.js"></script>
+    <!-- .......................................................... -->
+    <h1>My Google Maps Demo</h1>
+
+    <h2>Map Pré-enregistrée</h2>
+
+    <div id="map"></div>
+
+    <!-- .......................................................... -->
+    <h2>Map avec geolocalisation </h2>
+    <div id="map2"></div>
+
+    <!-- ........................................................... -->
+    <h2>Se connecter avec facebook</h2>
+
+    <fb:login-button 
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <script>
+        function initMap() {
+        var uluru = {lat: 50.8607254, lng: 4.383531500000004};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+        }
+    </script>
+
+
+    <!-- .......................................................... -->
+    <script>
+    if("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            disableDefaultUI: true
+        }
+        var map = new google.maps.Map(document.getElementById("map2"), myOptions);
+        });
+        } else {
+        var para = document.createElement('p');
+        para.textContent = 'Argh, no geolocation!';
+        document.body.appendChild(para);
+    }
+</script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDuGt0E5IEGkcE6ZfrKfUtE9Ko_de66pA&callback=initMap"></script>
+    </script>
+
+<script src="./js/ajax.js"></script>
+<script src="./js/cours.js"></script>
 </body>
 </html>

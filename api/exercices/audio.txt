@@ -1,0 +1,3 @@
+The IBM® Text to Speech service provides an Application Programming Interface (API) that uses IBM's speech-synthesis capabilities to convert text to an audio signal. The service provides a Representational State Transfer (REST) interface that lets you synthesize written text into natural-sounding speech in a variety of languages, accents, and voices.
+
+The service currently synthesizes text from English, French, German, Italian, Japanese, Spanish, or Brazilian Portuguese into audio spoken in a male or female voice (the service supports only a single gender for some languages).

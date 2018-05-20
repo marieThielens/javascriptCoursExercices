@@ -1,3 +1,16 @@
+// Faire vibrer le téléphone ........................
+function vibration(){
+    navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]);   
+}
+
+// Afficher les notifications (marche pas sur le telephone) ..........
+
+Notification.requestPermission().then(function(result) {
+    console.log(result);
+});
+
+
+// Api 1 (connexion à des articles qui sont sur heroku)............
 var articlesElt = document.getElementById("articles");
 
 ajaxGet("https://oc-jswebsrv.herokuapp.com/api/articles", function (reponse) {
@@ -18,6 +31,8 @@ ajaxGet("https://oc-jswebsrv.herokuapp.com/api/articles", function (reponse) {
     });
 });
 
+// API (connexion à api du premier ministre)...........
+
 var premMinElt = document.getElementById("premMin");
 // Accès aux informations publiques sur le Premier Ministre
 ajaxGet("https://www.data.gouv.fr/api/1/organizations/premier-ministre/", function (reponse) {
@@ -31,20 +46,33 @@ ajaxGet("https://www.data.gouv.fr/api/1/organizations/premier-ministre/", functi
     premMinElt.appendChild(logoElt);
 });
 
-// Accès à la météo de Lyon avec la clé d'accès 50a65432f17cf542
-// ajaxGet("http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Lyon.json", function (reponse) {
-//     var meteo = JSON.parse(reponse);
-//     // Récupération de certains résultats
-//     var temperature = meteo.current_observation.temp_c;
-//     var humidite = meteo.current_observation.relative_humidity;
-//     var imageUrl = meteo.current_observation.icon_url;
-//     // Affichage des résultats
-//     var conditionsElt = document.createElement("div");
-//     conditionsElt.textContent = "Il fait actuellement " + temperature +
-//         "°C et l'humidité est de " + humidite;
-//     var imageElt = document.createElement("img");
-//     imageElt.src = imageUrl;
-//     var meteoElt = document.getElementById("meteo");
-//     meteoElt.appendChild(conditionsElt);
-//     meteoElt.appendChild(imageElt);
-// });
+
+//   Facebook ............................................
+
+// Vérifier l'état de connexion
+
+// FB.getLoginStatus : méthode qui déclanche un appel vers facebook pour obtenir l'état de connexion
+FB.getLoginStatus(function(response) {
+    // Puis appelle les fonctions de rappel avec le resultat
+    statusChangeCallback(response);
+});
+
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
