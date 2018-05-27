@@ -30,12 +30,30 @@ var nombre = 10; // -> ici vaut 10
 Assignation unique, la valeur est constante, c'est à dire qu'on ne peut pas la changer. Comme pour un identifiant par exemple. On veut qu'il soit unique.
 
 ```js
-const nombre = 10;
-const nombre = 5;
+// Avec const je ne peut pas modifier la valeur...............
+const nombre = 1;
+{
+    const nombre = 9;
+       // nombre = 8; -> Uncaught TypeError: Assignement to constant variable
 
-let nombre2 = 10;
-let nombre2 = 5;
+    console.log(nombre); // -> 9
+}
+console.log(nombre); // -> 1
 
-console.log(nombre); // error 'nombre' has already been declared
-console.log(nombre2); //
+// const nombre = 5 ; -> error 'nombre' has already been declared .......
+
+
+// Avec let je peux modifier la valeur...............
+let nombre2 = 2;
+{ // Ca marche aussi sans les brackets {}
+    nombre2 = 8;
+    console.log(nombre2); // -> 8
+}
+console.log(nombre2); // -> 8
+
+
+// let nombre 2 = 8 ; -> nombre 2 has already been declared .......
 ```
+
+- Avec let j'ai pu redéfinir la valeur de ma "varible". `nombre2 = 8;`
+- Ave const non. `nombre = 8; -> Uncaught TypeError: Assignement to constant variable`
