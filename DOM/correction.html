@@ -28,23 +28,33 @@
 
     <script>
 
-    function infosLiens() {
-    var liensElts = document.getElementsByTagName("a");
-    var nombreLiens = liensElts.length;
-    console.log(nombreLiens);
+// 1. Gestion des attributs ..................................................
 
-    if (nombreLiens > 0) {
-        console.log(liensElts[0].getAttribute("href"));
-        console.log(liensElts[nombreLiens - 1].getAttribute("href"));
-    }
-}                 
-infosLiens();
+// 1 : Aficher le nombre de lien
+
+var nombre = document.querySelectorAll("li a");
+console.log(nombre.length); // -> 4
+
+// 2 : Afficher premier enfant
+                
+console.log(nombre[0].href); // -> https://fr.wikipedia.org/wiki/Clarinette
+
+// 3 : Afficher dernier lien avec une fonction
+
+function affiche(){
+    var papa = document.getElementsByTagName('a');
+    var dernier = papa[papa.length - 1];
+
+    console.log(dernier.href);
+}
 
 
-// Exercices 3
+// 2. Afficher si un des éléments au dessus possède une classe choisie ........................
 function possede(id, classe) {
     var instrument = document.getElementById(id);
+    // Si l'id existe
     if (instrument !== null) {
+        // contains = vérifie si la classe est présente
         console.log(instrument.classList.contains(classe));
     } else {
         console.log("Aucun élément ne possède l'identifiant " + id);
@@ -58,7 +68,7 @@ possede("contrebasse", "cordes"); // Doit afficher false
     
     </script>
 
-<!-- Exercice 4 -->
+<!-- 3) Créer un nouvel élément.............................. -->
 <h1>Quelques journaux en ligne</h1>
 <div id="contenu"></div>
 
@@ -67,13 +77,13 @@ possede("contrebasse", "cordes"); // Doit afficher false
 var journaux = ["http://lemonde.fr", "http://lefigaro.fr", "http://liberation.fr"];
 
 // On fait une boucle du tableau
-for(var i=0; i < journaux.length; i++){
+for(var element in journaux){
     // crée un élément a
     var lien = document.createElement('a');
         // Rajout d'un contenu texte, chaque element du tableau
-        lien.textContent = journaux[i];
+        lien.textContent = journaux[element];
         // transformer ce texte en href
-        lien.href = journaux[i];
+        lien.href = journaux[element];
 
     // Creer un enfant
     document.getElementById('contenu').appendChild(lien);
