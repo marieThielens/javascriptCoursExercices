@@ -1,3 +1,3 @@
 # Javascript
 
-Un memento personnel pour avoir tout sous la main
+Résumé javascript : les fonctions, le dom, ajax, API, ECMAScript, objets, ect ..
