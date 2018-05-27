@@ -12,22 +12,30 @@ Cette opération "magique" est réalisée par le compilateur Traceur, un outil m
     </script>
 ```
 
-
-```js
-function swap(x, y) {
-    if (x != y) {
-        var old = x;
-        let tmp = x;
-        x = y;
-        y = tmp;
-    }
-
-    console.log(typeof(old));   // number
-    console.log(typeof(tmp));   // undefined
-}
-```
-
 ## let
 
-On utilise let comme var (à la place) son ancêtre.
-Le mot clé let permet de déclarer une variable limitée à la portée d'un bloc, c'est-à-dire qu'elle ne peut être utilisée que dans le bloc où elle a été déclarée, ce qui n'est pas le cas avec var.
+On utilise let comme var (à la place) son ancêtre. La variable peut être réaffectée.
+Le mot clé let permet de déclarer une variable limitée à la portée d'un bloc, c'est-à-dire qu'elle ne peut être utilisée que dans le bloc où elle a été déclarée (entre les {}) , ce qui n'est pas le cas avec var.
+
+```js
+var nombre = 10; // -> ici vaut 10
+{
+    let nombre = 2; // -> ici vaut 2
+}
+// -> ici vaut 10
+```
+
+## const
+
+Assignation unique, la valeur est constante, c'est à dire qu'on ne peut pas la changer. Comme pour un identifiant par exemple. On veut qu'il soit unique.
+
+```js
+const nombre = 10;
+const nombre = 5;
+
+let nombre2 = 10;
+let nombre2 = 5;
+
+console.log(nombre); // error 'nombre' has already been declared
+console.log(nombre2); //
+```
