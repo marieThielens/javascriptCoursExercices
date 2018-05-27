@@ -90,6 +90,8 @@ Résulat :
 
 <img src="dico.png" style="width:50%;">
 
+Voici le code pour démarrer :
+
 ```html
 
 <!doctype html>
