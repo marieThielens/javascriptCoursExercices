@@ -1,0 +1,37 @@
+
+
+Un formulaire : accède aux éléments grâce à leur attribut name
+
+Debugger
+
+indefined : la variable est déclarée mais on ne lui a jamais donné de valeur.
+null : objet vide
+
+Boucles
+
+switch
+
+switch(choix){
+case "oui" : console.log('kjhkjh');
+break;
+defauld : console.log('kjhkjh');
+break;
+}
+
+while(condition)
+do … while : les instructions seront toujours exécutées au moins une fois. Ex: on demande à l'utilisateur une chaine de caractère tant qu'il ne clique pas sur annuler.
+var msg;
+do
+	msg = prompt("Entrez un message ou cliquez sur annuler");
+while(msg);
+
+Parcourir un tableau
+
+foreach : permet d’exécuter une fonction donnée sur chaque élément du tableau
+var tableau = ['a', 'b'];
+      tableau.foreach(function(element){
+	console.log
+api
+
+XMLHttpRequest: est un objet javascript qui permet de récupérer des données via HTTP. Pour l’utiliser il suffit de créer une instance de cet objet, d’ouvrir une URL et d’envoyer la requête
+const req = new XMLHttpRequest();

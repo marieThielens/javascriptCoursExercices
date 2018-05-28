@@ -3,7 +3,6 @@
 1. Créez une fonction qui dit bonjour. Complétez le programme ci-dessous pour qu'il fasse saisir le prénom et le nom de l'utilisateur dans deux variables, puis affiche le résultat de l'appel à la fonctiondireBonjour().
 
 ```JS
-
 function direBonjour(prenom, nom) {
     var message = "Bonjour, " + prenom + " " + nom + " !";
     return message;
