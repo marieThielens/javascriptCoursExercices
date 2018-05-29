@@ -126,3 +126,26 @@ window.addEventListener("beforeunload", function (e) {
 ```
 
 <img src="../images/fermeture.jpg" style="width:70%;">
+
+## La propagation des évènements
+
+Si je met un clic sur un bouton et que je veux qu'il se propage à son parent. Je met l'évènement sur le bouton
+
+```html
+<p id="para">Un paragraphe avec un
+    <button id="propa">bouton</button> à l'intérieur
+</p>
+
+<script>
+// Gestion du clic sur le paragraphe
+document.getElementById("para").addEventListener("click", function () {
+    console.log("Gestionnaire paragraphe");
+});
+// Gestion du clic sur le bouton
+document.getElementById("propa").addEventListener("click", function (e) {
+    console.log("Gestionnaire bouton");
+});
+</script>
+```
+
+Arrêter la propoagation : `e.stopPropagation();` sur (e)
