@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<!-- ................ Exercice 1 : compteur de click ............................. -->
+<button id="clic">Cliquez-moi !</button>
+<p>Vous avez cliqué <span id="compteurClics">0</span> fois</p>
+<button id="desactiver">Désactiver le comptage</button>
+
+<script>
+
+function clic() {
+    compteurClics++;
+    document.getElementById("compteurClics").textContent = compteurClics;
+}
+
+var compteurClics = 0;
+
+document.getElementById("clic").addEventListener("click", clic);
+
+document.getElementById("desactiver").addEventListener("click", function () {
+    document.getElementById("clic").removeEventListener("click", clic);
+});
+
+</script>
+
+
+<!-- ...................Exercice 2 : changer de couleur...............................-->
+
+<p>Appuyez sur les touches R, J, V et B pour changer la couleur des paragraphes</p>
+
+<h1>Paragraphe 1</h1>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim fringilla dapibus. Curabitur placerat efficitur molestie. Quisque quis consequat nibh. Aenean feugiat, eros eget aliquam vulputate, leo augue luctus lectus, non lobortis libero quam non sem. Aliquam sit amet tincidunt ex, mollis interdum massa. Sed vulputate mi id accumsan scelerisque. Nam interdum iaculis ipsum, non convallis mauris faucibus et. Pellentesque in imperdiet lorem, in condimentum neque. Nullam auctor sem eu sapien pulvinar, non ultricies ipsum hendrerit. Aliquam at magna convallis, ultrices enim vitae, mollis lacus.</div>
+
+<h1>Paragraphe 2</h1>
+<div>Vivamus at justo blandit, ornare leo id, vehicula urna. Fusce sed felis eget magna viverra feugiat eget nec orci. Duis non massa nibh. Aenean vehicula velit a magna lobortis tempor ut quis felis. Proin vitae dui a eros facilisis fringilla ut ut ante. Curabitur eu magna dui. Ut hendrerit suscipit metus, id vehicula velit. Pellentesque ac nisl rutrum, efficitur velit dictum, cursus odio.</div>
+
+<h1>Paragraphe 3</h1>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet pharetra massa. Nulla blandit erat nulla, et scelerisque libero varius ut. Praesent bibendum eu magna ullamcorper venenatis. Sed ut pellentesque leo. Sed ultrices sapien consequat odio posuere gravida. Nunc lorem tortor, volutpat nec maximus in, suscipit a ex. Praesent efficitur ex ut viverra placerat. Vivamus eu sapien sed enim vehicula sodales.</div>
+
+
+<script>
+
+document.addEventListener("keypress", function(e){
+
+    var touche = e.keyCode;
+
+    switch(touche){
+        case 114 : // R
+        couleur = "red";
+        break;  
+
+        case 106 : // J
+        couleur = "yellow";
+        break;  
+
+        case 118 : // V
+        couleur = "green";
+        break;  
+
+        case 98 : // R
+        couleur = "red";
+        break;  
+    }
+    
+    var div = document.getElementsByTagName('div');
+    for(var i=0; i< div.length; i++){
+        div[i].style.backgroundColor = couleur;
+    }
+});
+
+</script>
+
+<!-- .................Exercice 3 todoLIst : ajouter à la liste un élément à faire.....................-->
+<h1>Tâches à faire </h1>
+
+<ul id="tache"></ul>
+<button onclick="ajouter();">Ajouter une tâche</button>
+
+<script>
+
+function ajouter(){
+   var choix = prompt("Ajoutez la tâche de votre choix");
+   if(choix != null){
+        var tache = document.createElement("li");
+            tache.textContent = choix;
+        document.getElementById('tache').appendChild(tache);
+   }
+}
+</script>
+
+
+<!-- ...................Exercice 4 Quiz interactif......................................-->
+<div id="contenu"></div>
+
+<script>
+
+// Liste des questions à afficher. Une question est définie par son énoncé et sa réponse
+var questions = [
+    {
+        enonce: "Combien font 2+2 ?",
+        reponse: "2+2 = 4"
+    },
+    {
+        enonce: "En quelle année Christophe Colomb a-t-il découvert l'Amérique ?",
+        reponse: "1492"
+    },
+    {
+        enonce: "On me trouve 2 fois dans l'année, 1 fois dans la semaine, mais pas du tout dans le jour... Qui suis-je ?",
+        reponse: "La lettre N"
+    }
+];
+
+var i = 1; // Pour numéroter les questions
+
+    for(var element in questions){
+        var p = document.createElement("p");
+            p.textContent = questions[element].enonce;
+        var contenu = document.getElementById("contenu").appendChild(p);
+
+        var bouton = document.createElement("button").textContent = "Afficher la réponse";
+        
+        
+
+console.log(questions[element].enonce);
+    }
+</script>
+
+</body>
+</html>

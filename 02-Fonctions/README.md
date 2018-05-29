@@ -12,7 +12,7 @@ function direBonjour(){
 ou 
 
 ```JS
-fucntion direBonjour(){
+function direBonjour(){
     var message = "Bonjour";
     return message;
 }

@@ -50,8 +50,6 @@ boutonElt.addEventListener("click", function () {
 
 ### Appel de la fonction sur le bouton
 
-
-
 ## Quand jappuie sur une touche du clavier
 
 ```js
