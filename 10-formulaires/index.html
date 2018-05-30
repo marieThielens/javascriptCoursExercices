@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<form>
+        <h1>Formulaire d'inscription</h1>
+        <p>
+            <label for="pseudo">Pseudo</label> :
+            <input type="text" name="pseudo" id="pseudo" required>
+            <span id="aidePseudo"></span>
+        </p>
+        <p>
+            <label for="mdp">Mot de passe</label> :
+            <input type="password" name="mdp" id="mdp" required>
+            <span id="aideMdp"></span>
+        </p>
+        <p>
+            <label for="courriel">Courriel</label> :
+            <input type="email" name="courriel" id="courriel" required placeholder="utilisateur@domaine.fr">
+            <span id="aideCourriel"></span>
+        </p>
+        <p>
+            <input type="checkbox" name="confirmation" id="confirmation">
+            <label for="confirmation">M'envoyer un courriel de confirmation</label>
+        </p>
+        <p>
+            <input type="radio" name="abonnement" id="abonewspromo" value="abonewspromo">
+            <label for="abonewspromo">M'abonner à la newsletter et aux promotions</label>
+            <br>
+            <input type="radio" name="abonnement" id="abonews" value="abonews">
+            <label for="abonews">M'abonner uniquement à la newsletter</label>
+            <br>
+            <input type="radio" name="abonnement" id="aborien" value="aborien" checked>
+            <label for="aborien">Ne pas m'abonner</label>
+            <br>
+        </p>
+        <p>
+            <label for="nationalite">Nationalité :</label>
+            <select name="nationalite" id="nationalite">
+                <option value="FR" selected>Française</option>
+                <option value="BE">Belge</option>
+                <option value="SUI">Suisse</option>
+                <option value="XX">Autre</option>
+            </select>
+        </p>
+
+        <input type="submit" value="Envoyer">
+        <input type="reset" value="Annuler">
+    </form>
+
+    <script>
+    /* .....................Input type text.......................*/
+    var pseudo = document.getElementById("pseudo");
+        pseudo.value = "Entrez un pseudo";
+    
+    // Affichage d'un message pour dire à l'utilisateur qu'il doit entrer un pseudo
+    pseudo.addEventListener("focus", function (){ // lorsqu'il à le focus
+        document.getElementById("aidePseudo").textContent = "Entrez un pseudo";
+    });
+    pseudo.addEventListener("blur", function(){
+        document.getElementById("aidePseudo").textContent = "";
+    }); 
+    // Si on veut que le focus soit là dès le départ
+    // pseudo.focus();   
+
+
+    /*........................checkbox.............................*/
+
+    // Affichage de la demande de confirmation d'inscription
+    document.getElementById("confirmation").addEventListener("change", function (e) {
+        console.log("Demande de confirmation : " + e.target.checked);
+    });
+
+    /*......................Boutons radio..........................*/
+    var abonner = document.getElementsByName("abonnement");
+    for (var i =0; i < abonner.length; i++){
+        abonner[i].addEventListener("change", function (e){
+            console.log("Formule d'abonnement choisie : " + e.target.value);
+        });
+    }
+
+    /*....................Listes déroulantes........................*/
+    // Affichage du code de nationalité choisi
+    document.getElementById("nationalite").addEventListener("change", function (e) {
+        console.log("Code de nationalité : " + e.target.value);
+    });
+var form = document.querySelector("form");
+// Affiche de toutes les données saisies ou choisies
+form.addEventListener("submit", function (e) {
+    var pseudo = form.elements.pseudo.value;
+    var mdp = form.elements.mdp.value;
+    var courriel = form.elements.courriel.value;
+    console.log("Vous avez choisi le pseudo " + pseudo + ", le mot de passe " +
+        mdp + " et le courriel " + courriel);
+    if (form.elements.confirmation.checked) {
+        console.log("Vous avez demandé une confirmation d'inscription par courriel");
+    } else {
+        console.log("Vous n'avez pas demandé de confirmation d'inscription par courriel");
+    }
+    switch (form.elements.abonnement.value) {
+    case "abonewspromo":
+        console.log("Vous êtes abonné(e) à la newsletter et aux promotions");
+        break;
+    case "abonews":
+        console.log("Vous êtes abonné(e) à la newsletter");
+        break;
+    case "aborien":
+        console.log("Vous n'êtes abonné(e) à rien");
+        break;
+    default:
+        console.log("Erreur : code d'abonnement non reconnu");
+    }
+    switch (form.elements.nationalite.value) {
+    case "FR":
+        console.log("Vous êtes français(e)");
+        break;
+    case "BE":
+        console.log("Vous êtes belge");
+        break;
+    case "SUI":
+        console.log("Vous êtes suisse");
+        break;
+    default:
+        console.log("Erreur : code de nationalité non reconnu");
+    }
+    e.preventDefault(); // Annulation de l'envoi des données
+});
+
+
+/* ...................Contrôle formulaire.........................*/
+// Contrôle du courriel en fin de saisie
+document.getElementById("courriel").addEventListener("blur", function (e) {
+    // Correspond à une chaîne de la forme xxx@yyy.zzz
+    var regexCourriel = /.+@.+\..+/;
+    var validiteCourriel = "";
+    if (!regexCourriel.test(e.target.value)) {
+        validiteCourriel = "Adresse invalide";
+    }
+    document.getElementById("aideCourriel").textContent = validiteCourriel;
+});
+    </script>
+</body>
+</html>
