@@ -43,3 +43,5 @@ Code de base :
 
     <button>Ajouter une tâche</button>
 ```
+
+<img src="../images/quiz.png">

@@ -118,20 +118,33 @@ var questions = [
     }
 ];
 
-var i = 1; // Pour numéroter les questions
 
-    for(var element in questions){
-        var p = document.createElement("p");
-            p.textContent = questions[element].enonce;
-        var contenu = document.getElementById("contenu").appendChild(p);
+questions.forEach(function (question){
 
-        var bouton = document.createElement("button").textContent = "Afficher la réponse";
-        
-        
+    // La question
+    var div = document.createElement("div");
+        div.textContent = question.enonce;
+    
+    // Partie réponse
+    var reponseBloc = document.createElement("div");
+    var bouton = document.createElement("button")
+        bouton.textContent = "Afficher la réponse";
 
-console.log(questions[element].enonce);
-    }
+        var reponse = document.createElement("div");
+
+        bouton.addEventListener("click", function(){
+            reponse.textContent = question.reponse;
+        });
+    
+    var contenu = document.getElementById("contenu").appendChild(div);
+        contenu.appendChild(bouton);
+        contenu.appendChild(reponse);
+
+// console.log(questions[element].enonce);
+});
 </script>
+
+<p>correction openclassroom : https://github.com/oc-courses/javascript-web/blob/gh-pages/chapitre_5/js/quiz.js</p>
 
 </body>
 </html>
