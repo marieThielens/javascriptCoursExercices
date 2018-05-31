@@ -22,3 +22,60 @@
 
 <p id="infoMdp"></p>
 ```
+<img src="../images/form.png">
+
+## 2. Liste de personnage
+
+- Un menu déroulant pour choisir une des maisons de Games of thrones
+- Apparition d'une liste de nom faisant partie de cette maison
+
+```html
+<h1>Quelques personnages de Game of Thrones</h1>
+    <form>
+        <label for="maison">Maison</label> :
+        <select name="maison" id="maison">
+            <option value="" selected>Choisissez une maison</option>
+        </select>
+    </form>
+
+    <p>
+        <ul id="persos"></ul>
+    </p>
+<script>
+    // Liste de quelques maisons de Game of Thrones. Chaque maison a un code et un nom
+var maisons = [
+    {
+        code: "ST",
+        nom: "Stark"
+    },
+    {
+        code: "LA",
+        nom: "Lannister"
+    },
+    {
+        code: "BA",
+        nom: "Baratheon"
+    },
+    {
+        code: "TA",
+        nom: "Targaryen"
+    }
+];
+
+// Renvoie un tableau contenant quelques personnages d'une maison
+function getPersonnages(codeMaison) {
+    switch (codeMaison) {
+    case "ST":
+        return ["Eddard", "Catelyn", "Robb", "Sansa", "Arya", "Jon Snow"];
+    case "LA":
+        return ["Tywin", "Cersei", "Jaime", "Tyrion"];
+    case "BA":
+        return ["Robert", "Stannis", "Renly"];
+    case "TA":
+        return ["Aerys", "Daenerys", "Viserys"];
+    default:
+        return [];
+    }
+}
+</script>
+```
