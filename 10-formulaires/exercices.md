@@ -79,3 +79,59 @@ function getPersonnages(codeMaison) {
 }
 </script>
 ```
+
+## 3. Autocomplétion
+
+L'html 
+
+```html
+    <style>
+        /* Augmente l'espacement gauche et droite des suggestions */
+    .suggestion {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    /* Modifie la couleur de la suggestion survolée par la souris */
+    .suggestion:hover {
+        background-color: #adf;
+        cursor: pointer;
+    }
+
+    /* Positionne la liste des suggestions au-dessous de la zone de saisie */
+    #suggestions {
+        position: absolute;
+        border: 1px solid black;
+        left: 171px;
+    }
+    </style>
+
+    <label for="pays">Tapez le nom d'un pays</label> :
+    <input type="text" id="pays">
+    <div id="suggestions"></div>
+
+    <script>
+        // Liste des pays
+var listePays = [
+    "Afghanistan",
+    "Afrique du Sud",
+    "Albanie",
+    "Algérie",
+    "Allemagne",
+    "Andorre",
+    "Angola",
+    "Anguilla",
+    "Antarctique",
+    "Antigua-et-Barbuda",
+    "Antilles néerlandaises",
+    "Arabie saoudite",
+    "Argentine",
+    "Arménie",
+    "Aruba",
+    "Australie",
+    "Autriche",
+    "Azerbaïdjan"
+];
+    </script>
+```
+

@@ -35,6 +35,33 @@
         <ul id="persos"></ul>
     </p>
 
+    <!-- .....................Exercice 3.................................-->
+
+    <style>
+            /* Augmente l'espacement gauche et droite des suggestions */
+        .suggestion {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+    
+        /* Modifie la couleur de la suggestion survolée par la souris */
+        .suggestion:hover {
+            background-color: #adf;
+            cursor: pointer;
+        }
+    
+        /* Positionne la liste des suggestions au-dessous de la zone de saisie */
+        #suggestions {
+            position: absolute;
+            border: 1px solid black;
+            left: 171px;
+        }
+        </style>
+    
+        <label for="pays">Tapez le nom d'un pays</label> :
+        <input type="text" id="pays">
+        <div id="suggestions"></div>
+
  <!-- .........................SCRIPT............................ -->
 <script>
 
@@ -143,6 +170,53 @@ maisonElt.addEventListener("change", function (e) {
     });
 });
 
+
+/*..........................Exercice 3................................*/
+// Liste des pays
+var listePays = [
+    "Afghanistan",
+    "Afrique du Sud",
+    "Albanie",
+    "Algérie",
+    "Allemagne",
+    "Andorre",
+    "Angola",
+    "Anguilla",
+    "Antarctique",
+    "Antigua-et-Barbuda",
+    "Antilles néerlandaises",
+    "Arabie saoudite",
+    "Argentine",
+    "Arménie",
+    "Aruba",
+    "Australie",
+    "Autriche",
+    "Azerbaïdjan"
+];
+
+var paysElt = document.querySelector("input");
+var suggestionsElt = document.getElementById("suggestions");
+
+// Gère le changement de valeur saisie
+paysElt.addEventListener("input", function () {
+    suggestionsElt.innerHTML = ""; // Vidage de la liste des suggestions
+    listePays.forEach(function (pays) {
+        // Si valeur en cours de saisie correspond au début du pays
+        if (pays.indexOf(paysElt.value) === 0) {
+            var suggestionElt = document.createElement("div");
+            suggestionElt.classList.add("suggestion");
+            suggestionElt.textContent = pays;
+            // Gère le lic sur une suggestion
+            suggestionElt.addEventListener("click", function (e) {
+                // Remplacement de la valeur saisie par la suggestion
+                paysElt.value = e.target.textContent;
+                // Vidage de la liste des suggestions
+                suggestionsElt.innerHTML = "";
+            });
+            suggestionsElt.appendChild(suggestionElt);
+        }
+    });
+});
 
 </script>
 
