@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<script>
+
+var stylo = {
+    type: "bille",
+    couleur: "bleu",
+    marque: "Bic",
+
+    id : function(){
+        return 'type : ' + this.type + ' couleur : ' + this.couleur + ' marque : ' + this.marque;
+    }
+};
+console.log("Mon stylo à " + stylo.type + " " + stylo.marque + " écrit en " + stylo.couleur);
+alert(stylo.id());
+
+
+function Stylo (type, couleur, marque, propriétaire) { // les propriétés de l'objet
+    // Initialisation de l'objet
+    this.type = type; // On affecte des valeurs aux propriétés . (pour lier avec new stylo())
+    this.couleur = couleur;
+    this.marque = marque;
+    this.propriétaire = propriétaire;
+}
+function Proprietaire (nom, age, sexe){
+    this.nom = nom;
+    this.age = age;
+    this.sexe = sexe;
+
+    // id : function(){
+    //     return this.nom + ' ' + this.age;
+    // }
+}
+var marie = new Proprietaire("Marie", 35, "F");
+var bic1 = new Stylo("bille", "bleu", "bic", marie);
+
+
+console.log(bic1.propriétaire.id);
+
+</script>
+
+
+</body>
+</html>

@@ -11,27 +11,21 @@
     <ul id="langages">
     </ul>
 
-    <script>
+   <script src="./ajax.js"></script>
 
-function ajaxGet(url, callback) {
-    var req = new XMLHttpRequest();
-    req.open("GET", url);
-    req.addEventListener("load", function () {
-        if (req.status >= 200 && req.status < 400) {
-            // Appelle la fonction callback en lui passant la réponse de la requête
-            callback(req.responseText);
-        } else {
-            console.error(req.status + " " + req.statusText + " " + url);
-        }
+   <script>
+    ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/langages.txt", function (reponse){
+        console.log(reponse);
     });
-    req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url);
+
+    ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/films.json", function (reponse) {
+        // Transforme la réponse en tableau d'objets JavaScript
+        var films = JSON.parse(reponse);
+        // Affiche le titre de chaque film
+        films.forEach(function (film) {
+            console.log(film.titre);
+        })
     });
-    req.send(null);
-}
-ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/langages.txt", function (reponse){
-    console.log(reponse);
-});
     </script>
 </body>
 </html>

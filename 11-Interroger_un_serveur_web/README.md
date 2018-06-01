@@ -77,3 +77,46 @@ function afficher(reponse) {
 
 ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/langages.txt", afficher);
 ```
+
+La fonction `ajaxGet` permet d'exécuter une requête HTTP asynchrone. Elle prend en paramètres l'URL cible et la fonction appelée en cas de succès de la requête.
+
+#### Rendre ce code plus propre, le centraliser
+
+Je vais mettre toute la fonction (sans l'appel de la fonction) dans un fichier ajax.js . Comme ça si je travaille avec plusieurs fichiers je n'aurait pas besoin de réecrire chaque fois la fonction en entier.
+
+### Appels AJAX et JSON
+
+`JSON.parse` permet de transformer du json en objet javascript
+`JSON.stringify` javascript->JSON
+
+```js
+var avion = {
+    marque: "Airbus",
+    couleur: "A320"
+};
+console.log(avion);
+// Transforme l'objet JavaScript en chaîne de caractères JSON
+var texteAvion = JSON.stringify(avion);
+console.log(texteAvion);
+// Transforme la chaîne de caractères JSON en objet JavaScript
+console.log(JSON.parse(texteAvion));
+```
+
+<img src="../images/json.png">
+
+### Récupérer des données JSON depuis un serveur
+
+La technique utilisée pour récupérer des données JSON est la même que pour un fichier texte, et nous allons pouvoir réutiliser notre fonction générique ajaxGet. Seul le traitement de la réponse reçue diffère pour s'adapter au format JSON.
+
+Exemple : récupérer les infos du fichier films.json
+
+```js
+    ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/films.json", function (reponse) {
+        // Transforme la réponse en tableau d'objets JavaScript
+        var films = JSON.parse(reponse);
+        // Affiche le titre de chaque film
+        films.forEach(function (film) {
+            console.log(film.titre);
+        })
+    });
+```

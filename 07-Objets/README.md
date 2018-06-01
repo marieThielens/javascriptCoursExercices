@@ -15,13 +15,22 @@ Cet objet possède des propriétés. Imaginons que dans la vraie vie on ai un ob
 ### Si on a 1 seul objet on peut utiliser la notation litérale :
 
 ```js
-var stylo = {
+let stylo = {
     type: "bille",
     couleur: "bleu",
-    marque: "Bic"
+    marque: "Bic",
+
+    id : function(){ // Une méthode
+        return 'type : ' + this.type + ' couleur : ' + this.couleur + ' marque : ' + this.marque;
+    }
 };
 console.log("Mon stylo à " + stylo.type + " " + stylo.marque + " écrit en " + stylo.couleur);
+alert(stylo.id());
 ```
+
+<img src="../images/obj.png" style="width:50%;">
+
+- `id` : une méthode pour retourner les infos de l'objet.
 
 - Modifier l'objet : `stylo.couleur = "vert";`
 - Ajouter un objet : `stylo.prix = 2.17;`
@@ -29,10 +38,11 @@ console.log("Mon stylo à " + stylo.type + " " + stylo.marque + " écrit en " + 
 ### Créer un objet
 
 ```js
-var monStylo = new Object();
+let monStylo = new Object();
     monStylo.type = "bille";
     monStylo.couleur = "bleu";
     monStylo.marque = "Bic";
+  
 ```
 
 On peut aussi définir ou accéder à des propriétés JavaScript en utilisant une notation avec les crochets.
@@ -53,13 +63,46 @@ La création de l'objet à partir du constructeur est appelée l'instanciation. 
 // Constructeur MonObjet
 function stylo (type, couleur, marque) { // les propriétés de l'objet
     // Initialisation de l'objet
-    this.type = type;
+    this.type = type; // On affecte des valeurs aux propriétés . (pour lier avec new stylo())
     this.couleur = couleur;
     this.marque = marque;
 }
 // Instanciation d'un objet à partir du constructeur
-var bicDeMarie = new stylo("bille", "bleu", "bic");
+let bicDeMarie = new stylo("bille", "bleu", "bic");
 
 ```
 
-On utilise `this`  pour affecter des valeurs aux propriétés d'un objet en fonction des valeurs passées en arguments de la fonction.
+On utilise `this` pour affecter des valeurs aux propriétés d'un objet en fonction des valeurs passées en arguments de la fonction.
+
+Imaginons que je veux que le propriétaire soit aussi un objet
+
+```js
+function Stylo (type, couleur, marque, propriétaire) { // les propriétés de l'objet
+    // Initialisation de l'objet
+    this.type = type; // On affecte des valeurs aux propriétés . (pour lier avec new stylo())
+    this.couleur = couleur;
+    this.marque = marque;
+    this.propriétaire = propriétaire;
+}
+function Proprietaire (nom, age, sexe){
+    this.nom = nom;
+    this.age = age;
+    this.sexe = sexe;
+}
+let marie = new Proprietaire("Marie", 35, "F");
+let bic1 = new Stylo("bille", "bleu", "bic", marie);
+
+
+console.log(bic1.propriétaire.nom);
+
+```
+
+## Parcourir un objet
+
+```js
+for(let element in stylo){
+    console.log(element); // Affiche chaque clé
+    console.log(stylo[element]); // Affiche chaque valeur
+}
+
+```
