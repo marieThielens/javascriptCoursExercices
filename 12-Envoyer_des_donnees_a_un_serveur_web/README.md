@@ -22,7 +22,7 @@ On obtien :
 
 dans votre dossier copiez :
 
-- le fichier pst_form.php
+- le fichier post_form.php
 - le fichier post_json.php
 
 Ces deux fichiers gère les données envoyer au serveur.

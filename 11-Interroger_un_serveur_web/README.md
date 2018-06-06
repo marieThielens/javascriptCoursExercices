@@ -26,7 +26,7 @@ Nous allons utiliser Apache pour publier localement deux fichiers auxquels nous 
 - Créez un fichier index.html
 - Créez un dossier data
 - Dans le dossier data mettre le fichier langages.txt et films.json
-- Rajoutez ce code dans l'html ou dans un fichier .js
+- Rajoutez ce code dans un fichier .js : ajax.js
 
 ```html
 <script>
