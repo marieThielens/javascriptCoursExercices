@@ -122,3 +122,75 @@ function ajaxPost(url, data, callback) {
 ```
 
 `data` un paramètre : il sagit de la donnée transmmise
+
+## Gérer l'envoi du formulaire
+
+L'objet `FormData`est de simplifier la soumission d'un formulaire avec AJAX. Ajoutez ceci à cours.js
+
+```js
+var form = document.querySelector("form");
+// Gestion de la soumission du formulaire
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    // Récupération des champs du formulaire dans l'objet FormData
+    var data = new FormData(form);
+    // Envoi des données du formulaire au serveur
+    // La fonction callback est ici vide
+    ajaxPost("http://localhost/github/javascriptCoursExercices/12-Envoyer_des_donnees_a_un_serveur_web/post_form.php", data, function () {});
+});
+
+```
+
+- Remplissez le formulaire
+- form_log.php contient maintenant les données du formulaire
+
+## Envoyer des données JSON
+
+Voici le code à mettre à la place de l'autre dans le fichier ajax.js
+
+```js
+// Exécute un appel AJAX POST
+// Prend en paramètres l'URL cible, la donnée à envoyer et la fonction callback appelée en cas de succès
+// Le paramètre isJson permet d'indiquer si l'envoi concerne des données JSON
+function ajaxPost(url, data, callback, isJson) {
+    var req = new XMLHttpRequest();
+    req.open("POST", url);
+    req.addEventListener("load", function () {
+        if (req.status >= 200 && req.status < 400) {
+            // Appelle la fonction callback en lui passant la réponse de la requête
+            callback(req.responseText);
+        } else {
+            console.error(req.status + " " + req.statusText + " " + url);
+        }
+    });
+    req.addEventListener("error", function () {
+        console.error("Erreur réseau avec l'URL " + url);
+    });
+    if (isJson) {
+        // Définit le contenu de la requête comme étant du JSON
+        req.setRequestHeader("Content-Type", "application/json");
+        // Transforme la donnée du format JSON vers le format texte avant l'envoi
+        data = JSON.stringify(data);
+    }
+    req.send(data);
+}
+```
+
+Testons les modifications : rajoutez ceci dans le fichier cours.js
+
+```js
+// Création d'un objet représentant un film
+var film = {
+    titre: "Zootopie",
+    annee: "2016",
+    realisateur: "Byron Howard et Rich Moore"
+};
+// Envoi de l'objet au serveur
+ajaxPost("http://localhost/github/javascriptCoursExercices/12-Envoyer_des_donnees_a_un_serveur_web/post_json.php", film,
+    function (reponse) {
+        // Le film est affiché dans la console en cas de succès
+        console.log("Le film " + JSON.stringify(film) + " a été envoyé au serveur");
+    },
+    true // Valeur du paramètre isJson
+);
+```
