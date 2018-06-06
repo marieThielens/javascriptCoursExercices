@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Quelques langages</h1>
+    <ul id="langages">
+    </ul>
+
+   <script src="./ajax.js"></script>
+
+   <script>
+    ajaxGet("http://localhost/github/javascriptCoursExercices/12-Envoyer_des_donnees_a_un_serveur_web/data/langages.txt", function (reponse){
+        console.log(reponse);
+    });
+
+    ajaxGet("http://localhost/github/javascriptCoursExercices/12-Envoyer_des_donnees_a_un_serveur_web/data/films.json", function (reponse) {
+        // Transforme la réponse en tableau d'objets JavaScript
+        var films = JSON.parse(reponse);
+        // Affiche le titre de chaque film
+        films.forEach(function (film) {
+            console.log(film.titre);
+        })
+    });
+    </script>
+</body>
+</html>

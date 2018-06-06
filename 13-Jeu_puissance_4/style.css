@@ -1,0 +1,21 @@
+table{
+    background-color:blue;
+}
+tr{
+    width:150px;
+    height:50px;
+    background-color:white;
+}
+td{
+    width:50px;
+    width:50px;
+    border:1px solid blue;
+    border-radius:50%;
+    
+}
+td .joueur1 {
+    background-color:red;
+}
+td .joueur2 {
+    background-color:yellow;
+}
