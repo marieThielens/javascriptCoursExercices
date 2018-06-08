@@ -10,4 +10,4 @@ var form = document.querySelector("form");
             message.textContent = "L'article a bien été ajouté.";
             document.getElementById("resultat").appendChild(message);
         });
-    });
+});
