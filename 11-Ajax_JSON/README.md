@@ -13,7 +13,7 @@ Ajax(Asybchrone Javascript AEXML)
 2. Un objet XMLHttpRequest est créé par JavaScript
 3. L'objet XMLHttpRequest envoie une requête à un serveur Web
 4. Le serveur traite la demande
-5. Le serveur envoie une réponse à la page Web
+5. Le serveur envoie une réponse à la page Web (reponseText)
 6. La réponse est lue par JavaScript
 7. L'action appropriée (comme la mise à jour de la page) est effectuée par JavaScript
 
@@ -43,6 +43,21 @@ xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 ```
 
 ### Passer des variables
+
+Avec GET les variables sont transmises directement dans l'url:
+
+```js
+xhr.open("GET", "handlingData.php?variable1=truc&variable2=bidule", true);
+xhr.send(null);
+```
+
+Pour POST il faut spécifier les variables dans l'arguement `send``
+
+```js
+xhr.open("POST", "post.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("variable1=truc&variable2=bidule");
+```
 
 Vous pouvez tester ce code avec le fichier index.html
 
@@ -92,8 +107,8 @@ Lorsqu'on recoit des données au format JSON (texte) il faut les convertir en ob
 
 ```js
 var monJSON = { "name":"Marie", "age":31, "ville":"Bruxelles"};
-var myObj = JSON.parse(myJSON);
-document.getElementById("demo").innerHTML = myObj.name;
+var monObj = JSON.parse(monJSON);
+document.getElementById("demo").innerHTML = monObj.name;
 ```
 
 `parse` : transforme un format JSON (texte) en objet javascript
