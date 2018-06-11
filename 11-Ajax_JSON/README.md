@@ -36,6 +36,14 @@ function loadDoc() {
 }
 ```
 
+Lorsqu'on utilise la méthode POST il faut absolument changer le type MIME de la requête avec la méthode `setRequestHeader`
+
+```js
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+```
+
+### Passer des variables
+
 Vous pouvez tester ce code avec le fichier index.html
 
 | Méthode                  | Description                                                                                                                                                     | Exemple                                                                       |
