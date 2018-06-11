@@ -12,6 +12,24 @@ Cette opération "magique" est réalisée par le compilateur Traceur, un outil m
     </script>
 ```
 
+## Déclaration de variable: var, const, let
+
+En javascript il y a 3 façon de déclarer des variables : `var`, `let` et `const`.
+Les variables avec `const` ne peuvent pas être réaffectées tandis que `let`, `var` le peuvent.
+
+Exemple simple
+
+```js
+const personne = "Marie";
+    personne = "Jonas"; // Va soulever une erreur, la personne ne peut pas être réaffectée.
+```
+
+```js
+let personne = "Marie";
+    personne = "Jonas"; 
+console.log(personne); // "Jonas", la réaffectation est autorisée avec let
+```
+
 ## let
 
 On utilise let comme var (à la place) son ancêtre. La variable peut être réaffectée.
@@ -58,9 +76,4 @@ console.log(nombre2); // -> 8
 - Avec let j'ai pu redéfinir la valeur de ma "varible". `nombre2 = 8;`
 - Ave const non. `nombre = 8; -> Uncaught TypeError: Assignement to constant variable`
 
-Exemple simple
 
-```js
-const personne = "Marie";
-    personne = "Jonas"; // Va soulever une erreur, la personne ne peut pas être réaffectée.
-```

@@ -6,6 +6,7 @@
 Variable : `var nomVariable = "texte";`
 Concaténation : `document.write("Votre" + age);`
 Ecrire dans l'html : `innerHTML`
+`use strict`: pour écrire du code sécurisé
 
 ## Conditions
 
@@ -40,6 +41,15 @@ switch(nom)
                 alert("Je n'ai rien à te dire...");
                 break;
 }
+```
+
+```JS
+    switch ( new Date().getDay()) {
+        case 6:
+        text = "Saturday"; // if (day == 6)
+        break;
+
+    }
 ```
 
 ## Les boucles
