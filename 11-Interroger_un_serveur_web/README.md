@@ -76,6 +76,10 @@ function afficher(reponse) {
 }
 
 ajaxGet("http://localhost/github/javascriptCoursExercices/11-Interroger_un_serveur_web/data/langages.txt", afficher);
+
+
+
+
 ```
 
 La fonction `ajaxGet` permet d'exécuter une requête HTTP asynchrone. Elle prend en paramètres l'URL cible et la fonction appelée en cas de succès de la requête.

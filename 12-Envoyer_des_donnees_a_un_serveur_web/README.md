@@ -29,7 +29,7 @@ Ces deux fichiers gère les données envoyer au serveur.
 
 ## Let's go
 
-Crée un fichier cours.html et mettre ce code 
+Créez un fichier cours.html et mettre ce code :
 
 ```html
 <!doctype html>

@@ -57,3 +57,10 @@ console.log(nombre2); // -> 8
 
 - Avec let j'ai pu redéfinir la valeur de ma "varible". `nombre2 = 8;`
 - Ave const non. `nombre = 8; -> Uncaught TypeError: Assignement to constant variable`
+
+Exemple simple
+
+```js
+const personne = "Marie";
+    personne = "Jonas"; // Va soulever une erreur, la personne ne peut pas être réaffectée.
+```
