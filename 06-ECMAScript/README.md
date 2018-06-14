@@ -77,3 +77,67 @@ console.log(nombre2); // -> 8
 - Ave const non. `nombre = 8; -> Uncaught TypeError: Assignement to constant variable`
 
 
+## Flèches et lexical
+
+Les flèches sont une fonction raccourcie utilisant la syntaxe => .
+
+```js
+var odds = evens.map(v => v + 1);
+var nums = evens.map((v, i) => v + i);
+
+// Lexical this
+var bob = {
+  _name: "Bob",
+  _friends: [],
+  printFriends() {
+    this._friends.forEach(f =>
+      console.log(this._name + " knows " + f));
+  }
+};
+```
+
+## Les classes
+
+En réalité les classes sont juste des fonctions un peu spéciales.
+
+### Déclarer une classe 
+
+On déclare une classe avec le mot clé `class`. Les classes commencent par une lettre majuscule.
+
+```js
+class Rectangle { // Déclaration de la classe
+
+    constructor(hauteur, largeur) { // Le constructeur (voir explication plus bas).
+        this.hauteur = hauteur;
+        this.largeur = largeur;
+    }
+}
+```
+
+### Les expressions de classes
+
+Si on utilise un nom dans l'expression, ce nom ne sera accessible que depuis le corps de la classe via la propriété `name` (cette valeur ne sera pas directement accessible pour les instances).
+
+```js
+// anonyme
+let Rectangle = class {
+  constructor(hauteur, largeur) {
+    this.hauteur = hauteur;
+    this.largeur = largeur;
+  }
+};
+
+// nommée
+let Rectangle = class Rectangle {
+  constructor(hauteur, largeur) {
+    this.hauteur = hauteur;
+    this.largeur = largeur;
+  }
+};
+```
+
+### Le corps de la classe, ses propriétés et ses méthodes
+
+Le coprs de la classe est la partie entre les accolades
+
+- Le constructeur : est une méthode qui permet de créer et d'initialiser les objets. Attention il ne peut y avoir qu'un seul constructeur par classe.
