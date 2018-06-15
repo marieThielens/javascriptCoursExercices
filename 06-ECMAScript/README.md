@@ -43,6 +43,38 @@ var nombre = 10; // -> ici vaut 10
 // -> ici vaut 10
 ```
 
+### La portée de let (scope) 
+
+```js
+function first() {
+  if(true) {
+    let a = 5;  
+  }
+  console.log(a); // -> erreur
+}
+```
+
+Avec une fonction, observez la différence entre `var` et `let`
+
+```js
+var i = 62;
+for (var  i = 0; i < 10; i++) {
+   console.log(i); // -> affiche les nombres de 0 à 9
+}
+console.log(i); // -> affiche 10
+
+```
+
+Scope de bloc avec let
+
+```js
+let i = 62;
+for (let  i = 0; i < 10; i++) {
+  console.log(i); // -> les nombres de 0 à 9
+}
+console.log(i); // -> 62
+```
+
 ## const
 
 Assignation unique, la valeur est constante, c'est à dire qu'on ne peut pas la changer. Comme pour un identifiant par exemple. On veut qu'il soit unique.
@@ -76,6 +108,22 @@ console.log(nombre2); // -> 8
 - Avec let j'ai pu redéfinir la valeur de ma "varible". `nombre2 = 8;`
 - Ave const non. `nombre = 8; -> Uncaught TypeError: Assignement to constant variable`
 
+### const et les objets
+
+Pour les objets crées avec `const`, on peut les modifier mais on ne peut pas leur assigner une nouvelle valeur.
+
+```js
+const x = { nom : "Marie"};
+x.nom = "Codeuse";
+``` 
+
+Avec le code suivant j'obtiens une erreur
+
+```js
+const x = { nom : "Marie" };
+x = { nom: "codeuse" };
+```
+On obtient une erreur car on essaie d’assigner une nouvelle valeur à x et const ne le permet pas.
 
 ## Flèches et lexical
 
@@ -138,6 +186,53 @@ let Rectangle = class Rectangle {
 
 ### Le corps de la classe, ses propriétés et ses méthodes
 
-Le coprs de la classe est la partie entre les accolades
+Le corps de la classe est la partie entre les accolades
 
-- Le constructeur : est une méthode qui permet de créer et d'initialiser les objets. Attention il ne peut y avoir qu'un seul constructeur par classe.
+- Le constructeur : est une méthode qui permet de créer et d'initialiser les objets. Attention il ne peut y avoir qu'un seul constructeur par classe. C'est un peu comme la carte d'identité de notre objet.
+- Méthode de prototype :
+
+```js
+class Rectangle {
+  constructor(hauteur, largeur) { // propriétés de l'instance
+    this.hauteur = hauteur;
+    this.largeur = largeur;
+  }
+ 
+  get area() {
+    return this.calcArea();
+  }
+
+  calcArea() {
+    return this.largeur * this.hauteur;
+  }
+}
+
+const carré = new Rectangle(10, 10);
+
+console.log(carré.area);
+``` 
+
+#### Créer une sous-classe avec extends
+
+```js
+class Animal { 
+  constructor(nom) {
+    this.nom = nom;
+  }
+  
+  parle() {
+    console.log(this.nom + ' fait du bruit.');
+  }
+}
+
+class Chien extends Animal {
+  constructor(nom) {
+    // Si on déclare un constructeur dans une classe fille, on doit utiiser super() avant this.
+    super(nom); // appelle le constructeur parent avec le paramètre
+  }
+  parle() {
+    console.log(this.nom + ' aboie.');
+  }
+}
+```
+
